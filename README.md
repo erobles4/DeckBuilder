@@ -1,9 +1,11 @@
 #Idea
+
 One line that encapsulates/describes the entire idea of your website
 
 Magic the gathering deck building showcase and competition request.
 
-#Motivation 
+#Motivation
+
 Describing why this is a good idea. Why would someone want to use
 your website? Why is this of interest to you? Aside from the fact that this project is a required
 component for the course, why do you want to build this particular project?
@@ -18,7 +20,8 @@ website so that players of the game have a place to search up cards and find new
 improve their games. I want the website to connect players and allow them to always have a
 game to play.
 
-# Application 
+# Application
+
 Describing the website functionality. What is it? What can users do
 with it?
 
@@ -30,7 +33,8 @@ make their deck public for other users to see. When the decks are public users c
 comments and feedback about the deck. Users can also request matches online or in person to
 other users.
 
-#Application Name 
+#Application Name
+
 Provide a name for your website.
 
 Magecraft
