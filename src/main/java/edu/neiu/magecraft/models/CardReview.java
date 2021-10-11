@@ -13,8 +13,8 @@ public class CardReview {
         this.cons = "";
     }
 
-    public CardReview(String playName, String cardName, String pros, String cons){
-        this.playerName = playName;
+    public CardReview(String playerName, String cardName, String pros, String cons){
+        this.playerName = playerName;
         this.cardName = cardName;
         this.pros = pros;
         this.cons = cons;

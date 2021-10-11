@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Card Review</title>
+</head>
+<body>
+    <h1>Card Review Blog Post</h1>
+
+    <br><br>
+    <form th:action="@{/cardReview}" th:object="${cardReview}" method="post">
+        <input id="playerName" type="text" th:field="*{playerName}" placeholder="Player Name">
+        <br>
+        <input id="cardName" type="text" th:field="*{cardName}" placeholder="Card Name">
+        <br>
+        <input id="pros" type="text" th:field="*{pros}" placeholder="No Pros">
+        <input id="cons" type="text" th:field="*{cons}" placeholder="No Cons">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
