@@ -2,11 +2,12 @@
 <html lang="en"
         xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <th:block th:insert="fragments/base :: headAttributes"></th:block>
     <title>Card Review</title>
 </head>
 <body>
-    <h1>Card Review Blog Post</h1>
+    <div th:replace="fragments/base :: header"></div>
+    <h3>Card Review Blog Post</h3>
 
     <br><br>
     <form th:action="@{/cardReview}" th:object="${cardReview}" method="post">
@@ -19,5 +20,8 @@
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <div th:replace="fragments/base :: footer"></div>
 </body>
+<th:block th:replace="fragments/base :: scripts"></th:block>
 </html>
