@@ -8,18 +8,44 @@
 <body>
     <div th:replace="fragments/base :: navigation"></div>
     <div th:replace="fragments/base :: header"></div>
-    <h3>Card Review Blog Post</h3>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h3 class="text-center">Card Review Blog Pos</h3>
+            </div>
+        </div>
+    </div>
 
     <br><br>
     <form th:action="@{/cardReview}" th:object="${cardReview}" method="post">
-        <input id="playerName" type="text" th:field="*{playerName}" placeholder="Player Name">
-        <br>
-        <input id="cardName" type="text" th:field="*{cardName}" placeholder="Card Name">
-        <br>
-        <input id="pros" type="text" th:field="*{pros}" placeholder="No Pros">
-        <input id="cons" type="text" th:field="*{cons}" placeholder="No Cons">
-        <br>
-        <input type="submit" value="Submit">
+        <div class="container-fluid">
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="playerName" type="text"
+                           th:field="*{playerName}" placeholder="Player Name"/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <input class="form-control" id="cardName" type="text"
+                           th:field="*{cardName}" placeholder="Card Name"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-3">
+                <div class="col-8">
+                    <input class="form-control" id="pros" type="text" th:field="*{pros}" placeholder="No Pros"/>
+                    <input class="form-control" id="cons" type="text" th:field="*{cons}" placeholder="No Cons"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
+                    <input class="btn btn-light btn-outline-dark" type="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+
     </form>
 
     <div th:replace="fragments/base :: footer"></div>
