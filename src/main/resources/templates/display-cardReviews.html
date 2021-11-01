@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/base :: headAttributes"></th:block>
+    <title>Card Reviews</title>
+</head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+    <div th:replace="fragments/base :: header"></div>
+
+    <div class="container mt-5">
+        <div th:each="cardReview: ${cardReview}">
+            <div class="row justify-content-center mb-5">
+                <div class="col-2 col-md-4"></div>
+                <div class="col-8 col-md-4 card">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${cardReview.playerName} + '        ' + ${cardReview.cardName}"></h5>
+                        <span th:text="'Pros: ' + ${cardReview.pros}"></span>
+                        <span th:text="'Cons: ' + ${cardReview.cons}"></span><br>
+                        <span th:text="'Date created: ' + ${#temporals.format(cardReview.created, 'dd-MM-yyyy HH:mm')}"></span><br>
+                        <span th:text="'Date modified: ' + ${#temporals.format(cardReview.modified, 'dd-MM-yyyy HH:mm')}"></span><br>
+                    </div>
+                </div>
+                <div class="col-2 col-md-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/base :: footer"></div>
+</body>
+<th:block th:replace="fragments/base :: scripts"></th:block>
+</html>

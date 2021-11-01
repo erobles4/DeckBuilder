@@ -19,23 +19,38 @@
     <br><br>
     <form th:action="@{/cardReview}" th:object="${cardReview}" method="post">
         <div class="container-fluid">
-            <div class="row justify-content-center mb-3">
+            <div class="row justify-content-center">
                 <div class="col-8 col-md-3">
                     <input class="form-control" id="playerName" type="text"
-                           th:field="*{playerName}" placeholder="Player Name"/>
+                           th:field="*{playerName}" placeholder="Player Name" required/>
                 </div>
             </div>
             <div class="row justify-content-center mb-3">
                 <div class="col-8 col-md-3">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('playerName')}"
+                        th:errors="*{playerName}">
+                   </span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 col-md-3">
                     <input class="form-control" id="cardName" type="text"
-                           th:field="*{cardName}" placeholder="Card Name"/>
+                           th:field="*{cardName}" placeholder="Card Name" required/>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('cardName')}"
+                         th:errors="*{cardName}">
+                   </span>
                 </div>
             </div>
 
             <div class="row justify-content-center mb-3">
                 <div class="col-8">
-                    <input class="form-control" id="pros" type="text" th:field="*{pros}" placeholder="No Pros"/>
-                    <input class="form-control" id="cons" type="text" th:field="*{cons}" placeholder="No Cons"/>
+                    <input class="form-control" id="pros" type="text" th:field="*{pros}" placeholder="No Pros" required/>
+                    <input class="form-control" id="cons" type="text" th:field="*{cons}" placeholder="No Cons" required/>
                 </div>
             </div>
 
