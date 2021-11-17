@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-        xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:insert="fragments/base :: headAttributes"></th:block>
     <title>Card Review</title>
@@ -8,16 +8,15 @@
 <body>
     <div th:replace="fragments/base :: navigation"></div>
     <div th:replace="fragments/base :: header"></div>
-    <div class="container-fluid">
+
+    <div class="container-fluid mt-3">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <h3 class="text-center">Card Review Blog Post</h3>
-            </div>
+            <h3 class="text-center col-12">View/Edit Card Review</h3>
         </div>
     </div>
 
     <br><br>
-    <form th:action="@{/cardReview}" th:object="${cardReview}" method="post">
+    <form class="mt-3 mb-3" th:action="@{/cardReview/edit/{id}(id=${cardReview.id})}" th:object="${cardReview}" method="post">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-8 col-md-3">
@@ -28,7 +27,7 @@
             <div class="row justify-content-center mb-3">
                 <div class="col-8 col-md-3">
                    <span class="text-danger small" th:if="${#fields.hasErrors('playerName')}"
-                        th:errors="*{playerName}">
+                         th:errors="*{playerName}">
                    </span>
                 </div>
             </div>
@@ -61,7 +60,6 @@
                 </div>
             </div>
 
-
             <div class="row justify-content-center mb-3">
                 <div class="col-8">
                     <input class="form-control" id="pros" type="text" th:field="*{pros}" placeholder="No Pros" required/>
@@ -79,13 +77,20 @@
                 </div>
             </div>
 
+            <div class="row justify-content-center mb-3">
+                <div class="col-8 col-md-3">
+                    <span th:text="'Date created: ' + ${#temporals.format(cardReview.created, 'dd-MM-yyyy HH:mm')}"></span><br>
+                    <span th:text="'Date Modified: ' + ${#temporals.format(cardReview.modified, 'dd-MM-yyyy HH:mm')}"></span>
+                </div>
+            </div>
+
             <div class="row justify-content-center">
                 <div class="col-8 col-md-3">
-                    <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+                    <input type="submit" class="btn btn-light btn-outline-dark" value="Submit"/>
+                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/view}">Cancel</a>
                 </div>
             </div>
         </div>
-
     </form>
 
     <div th:replace="fragments/base :: footer"></div>

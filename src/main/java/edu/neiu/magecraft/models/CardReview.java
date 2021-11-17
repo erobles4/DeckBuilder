@@ -1,6 +1,7 @@
 package edu.neiu.magecraft.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,6 +25,10 @@ public class CardReview {
     @NotNull(message = "Have you played with the card yet")
     private String cons;
 
+    @NotBlank(message="Email is required")
+    @Email(message="Must be a valid email address")
+    @Column(unique = true)
+    private String email;
 
     private LocalDateTime created;
     private LocalDateTime modified;
@@ -33,13 +38,19 @@ public class CardReview {
         this.cardName = "";
         this.pros = "";
         this.cons = "";
+        this.email= "";
     }
 
-    public CardReview(String playerName, String cardName, String pros, String cons){
+    public CardReview(String playerName, String cardName, String pros, String cons, String email){
         this.playerName = playerName;
         this.cardName = cardName;
         this.pros = pros;
         this.cons = cons;
+        this.email= email;
+    }
+
+    public long getId(){
+        return this.id;
     }
 
     public String getPlayerName() {
@@ -74,6 +85,10 @@ public class CardReview {
         this.cons = cons;
     }
 
+    public String getEmail(){ return email;}
+
+    public void setEmail(String email){ this.email = email;}
+
     public LocalDateTime getCreated() {
         return created;
     }
@@ -89,6 +104,7 @@ public class CardReview {
     public void setModified(LocalDateTime modified) {
         this.modified = modified;
     }
+
     @PrePersist
     public void onCreate(){
         this.setCreated(LocalDateTime.now());

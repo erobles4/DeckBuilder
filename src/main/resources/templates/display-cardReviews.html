@@ -11,15 +11,13 @@
 
     <div class="container mt-5">
         <div th:each="cardReview: ${cardReview}">
-            <div class="row justify-content-center mb-5">
+            <div class="row justify-content-center mb-3">
                 <div class="col-2 col-md-4"></div>
                 <div class="col-8 col-md-4 card">
                     <div class="card-body">
-                        <h5 class="card-title" th:text="${cardReview.playerName} + '        ' + ${cardReview.cardName}"></h5>
-                        <span th:text="'Pros: ' + ${cardReview.pros}"></span>
-                        <span th:text="'Cons: ' + ${cardReview.cons}"></span><br>
-                        <span th:text="'Date created: ' + ${#temporals.format(cardReview.created, 'dd-MM-yyyy HH:mm')}"></span><br>
-                        <span th:text="'Date modified: ' + ${#temporals.format(cardReview.modified, 'dd-MM-yyyy HH:mm')}"></span><br>
+                        <h5 class="card-title d-inline" th:text="${cardReview.playerName} + '  ' + ${cardReview.cardName}"></h5>
+                        <a th:href="@{/cardReview/view/{id}(id=${cardReview.id})}" class="ml-3 text-dark"><i class="fas fa-eye"></i></a>
+                        <a th:href="@{/cardReview/delete/{id}(id=${cardReview.id})}" class="ml-3 text-danger"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
                 <div class="col-2 col-md-4"></div>
