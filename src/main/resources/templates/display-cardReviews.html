@@ -17,12 +17,27 @@
                     <div class="card-body">
                         <h5 class="card-title d-inline" th:text="${cardReview.playerName} + '  ' + ${cardReview.cardName}"></h5>
                         <a th:href="@{/cardReview/view/{id}(id=${cardReview.id})}" class="ml-3 text-dark"><i class="fas fa-eye"></i></a>
-                        <a th:href="@{/cardReview/delete/{id}(id=${cardReview.id})}" class="ml-3 text-danger"><i class="fas fa-trash-alt"></i></a>
+                        <a class="ml-3 text-danger" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-trash-alt"></i></a>
                     </div>
                 </div>
                 <div class="col-2 col-md-4"></div>
             </div>
         </div>
+    </div>
+
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <form class="modal-content">
+            <div class="container">
+                <h1>Delete Review</h1>
+                <p>Are you sure you want to delete your review?</p>
+
+                <div class="clearfix">
+                    <a class="ml-2 btn btn-light btn-outline-dark" th:href="@{/view}">Cancel</a>
+                    <a th:href="@{/cardReview/delete/{id}(id=${cardReview})}" class="ml-3 text-danger"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+        </form>
     </div>
 
     <div th:replace="fragments/base :: footer"></div>
