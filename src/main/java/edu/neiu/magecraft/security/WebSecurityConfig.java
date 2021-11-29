@@ -30,10 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/cardReview/**").authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/cardReview", true).permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/login?logout").permitAll();
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{

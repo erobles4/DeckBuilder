@@ -13,8 +13,9 @@ public class HomeController {
         return "index-page";
     }
 
-
     @GetMapping("/login")
-    public String getloginPage
+    public String getLoginPage(){
+        return "login";
+    }
 
 }
