@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/base :: headAttributes"></th:block>
+    <title>Login</title>
+</head>
+<body>
+    <div th:replace="fragments/base :: navigation"></div>
+    <div th:replace="fragments/base :: header"></div>
+
+    <br><br>
+    <form th:action="@{/login}" method="post">
+
+    </form>
+
+    <div th:replace="fragments/base :: footer"></div>
+</body>
+<th:block th:replace="fragments/base :: scripts"></th:block>
+</html>

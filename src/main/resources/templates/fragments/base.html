@@ -28,7 +28,7 @@
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/cardReview' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/cardReview}">Card Review</a>
                 </li>
-                <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/view' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/view}">Blog</a>
                 </li>
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
@@ -37,8 +37,8 @@
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/}">Card DateBase</a>
                 </li>
-
             </ul>
+            <a th:href="@{/logout}" class="btn btn-light btn-outline-dark">Logout</a>
         </div>
     </nav>
 

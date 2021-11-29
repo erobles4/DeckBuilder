@@ -58,7 +58,7 @@ public class CardReviewController {
         try {
             CardReview originalCardReview = this.cardReviewRepo.findById(id).get();
             updateOriginCardReview(originalCardReview, cardReview);
-            this.cardReviewRepo.save(cardReview);
+            this.cardReviewRepo.save(originalCardReview);
         } catch(DataIntegrityViolationException e){
             errors.rejectValue("email", "invalidEmail", "Email not available");
             return "view-cardReview";
