@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extra-springsecurity5">
 <head>
     <th:block th:fragment="headAttributes">
         <meta charset="UTF-8">
@@ -25,7 +26,8 @@
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li class="nav-item" th:classappend="${#request.getServletPath() == '/cardReview' ? 'active' : ''}">
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/cardReview' ? 'active' : ''}"
+                    sec:authorize="hasAnyRole('USER','ADMIN')">
                     <a class="nav-link" th:href="@{/cardReview}">Card Review</a>
                 </li>
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/view' ? 'active' : ''}">
@@ -38,7 +40,7 @@
                     <a class="nav-link" th:href="@{/}">Card DateBase</a>
                 </li>
             </ul>
-            <a th:href="@{/logout}" class="btn btn-light btn-outline-dark">Logout</a>
+            <a th:href="@{/logout}" class="btn btn-light btn-outline-dark" sec:authorize="isAuthenticated()">Logout</a>
         </div>
     </nav>
 

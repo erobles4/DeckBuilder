@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/cardReview/**").authenticated()
+                .antMatchers("/cardReview/**").hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/cardReview", true).permitAll()
                 .and()
@@ -40,6 +40,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user")
                 .password(passwordEncoder().encode("password"))
-                .roles("USER");
+                .roles("USER")
+                .and()
+                .withUser("admin")
+                .password(passwordEncoder().encode("password"))
+                .roles("ADMIN");
     }
 }
