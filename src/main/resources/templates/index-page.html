@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extra-springsecurity5">
 <head>
     <th:block th:insert="fragments/base :: headAttributes"></th:block>
     <title>Mage Craft</title>
@@ -19,9 +20,19 @@
     <br><br>
 
     <div class="container-fluid">
-        <div class="row justify-content-center mt-3 mb-3">
+        <div class="row justify-content-center mt-3 mb-3" sec:authorize="isAuthenticated()">
+            <div class="col-8 col-md-3 text-center">
+                <h4 th:text = "'Welcome ' + ${user.firstName} + ' ' + ${user.lastName} + '!'"></h4>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mb-3" sec:authorize="isAnonymous()">
             <div class="col-8 col-md-3 text-center">
                 <a th:href="@{/login}" class="btn btn-light btn-outline-dark">Login</a>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3 mb-3" sec:authorize="isAnonymous()">
+            <div class="col-8 col-md-3 text-center">
+                <a th:href="@{/signup}" class="btn btn-light btn-outline-dark">SignUp</a>
             </div>
         </div>
     </div>

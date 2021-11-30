@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        User user = userRepo.findByUsername(username);
         User user = userRepo.findByEmail(email);
         if(user == null)
-            throw new UsernameNotFoundException("username " + email + " bot found");
+            throw new UsernameNotFoundException("username " + email + " not found");
         return user;
     }
 }

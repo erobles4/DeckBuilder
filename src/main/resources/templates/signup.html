@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extra-springsecurity5">
+<head>
+    <th:block th:insert="fragments/base :: headAttributes"></th:block>
+    <title>Sign Up</title>
+</head>
+<body>
+<div th:replace="fragments/base :: navigation"></div>
+<div th:replace="fragments/base :: header"></div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <h3 class="text-center">Sign up</h3>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<form th:action="@{/newSignUp}" th:object="${user}" method="post">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" id="playerName" type="text"
+                       th:field="*{playerName}" placeholder="Player Name" required/>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" id="userName" type="text"
+                       th:field="*{username}" placeholder="User Name" required/>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" id="email" type="email"
+                       th:field="*{email}" placeholder="Email" required/>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" type="password"
+                       th:field="*{password}" placeholder="Password"required/>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" id="firstName" type="text"
+                       th:field="*{firstName}" placeholder="First Name" required/>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3 mb-2">
+                <input class="form-control" id="lastName" type="text"
+                       th:field="*{lastName}" placeholder="Last Name" required/>
+            </div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-8 col-md-3 mb-2">
+                   <span class="text-danger small" th:if="${#fields.hasErrors('lastName')}"
+                         th:errors="*{lastName}">
+                   </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8 col-md-3">
+                <input type="submit" class="btn btn-light btn-outline-dark" value="Submit" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div th:replace="fragments/base :: footer"></div>
+</body>
+<th:block th:replace="fragments/base :: scripts"></th:block>
+</html>

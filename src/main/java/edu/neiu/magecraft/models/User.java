@@ -5,6 +5,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,6 +30,10 @@ public class User implements UserDetails {
 
     private String firstName;
     private String lastName;
+
+    @Column(unique = true, nullable = false)
+    private String playerName;
+
     private boolean enabled;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
@@ -42,12 +48,13 @@ public class User implements UserDetails {
 
     public User(){ }
 
-    public User(String email, String username, String password, String firstName, String lastName){
+    public User(String playerName, String username, String email,  String password, String firstName, String lastName){
         this.email = email;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.playerName = playerName;
         this.accountNonExpired = true;
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
@@ -97,6 +104,14 @@ public class User implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
     @Override
