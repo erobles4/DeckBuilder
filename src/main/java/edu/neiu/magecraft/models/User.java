@@ -46,9 +46,14 @@ public class User implements UserDetails {
 
     public enum Role { ROLE_ADMIN, ROLE_USER }
 
-    public User(){ }
+    public User(){
+        accountNonExpired = true;
+        accountNonLocked = true;
+        credentialsNonExpired = true;
+    }
 
-    public User(String playerName, String username, String email,  String password, String firstName, String lastName){
+    public User(String email, String playerName, String username,  String password, String firstName,
+                String lastName){
         this.email = email;
         this.username = username;
         this.password = password;

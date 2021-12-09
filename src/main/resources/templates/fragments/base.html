@@ -14,7 +14,7 @@
     <title>Mage Craft</title>
 </head>
 <body>
-    <nav th:fragment="navigation" class="navbar navbar-expand-lg navbar-light bg-light border border-dark">
+    <nav th:fragment="navigation" class="navbar">
         <a class="navbar-brand" th:href="@{/}"><img id="logo" th:src="@{/images/logo.jpg}"/></a>
         <button class="#navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarContent" aria-controls="navbarContent"
@@ -39,12 +39,20 @@
                 <li class="nav-item" th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">
                     <a class="nav-link" th:href="@{/}">Card DateBase</a>
                 </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/cardReview' ? 'active' : ''}"
+                    sec:authorize="hasAnyRole('USER','ADMIN')">
+                    <a class="nav-link" th:href="@{/cardReview}">My Account</a>
+                </li>
+                <li class="nav-item" th:classappend="${#request.getServletPath() == '/user' ? 'active' : ''}"
+                    sec:authorize="hasRole('ADMIN')">
+                    <a class="nav-link" th:href="@{/users}">Users</a>
+                </li>
             </ul>
             <a th:href="@{/logout}" class="btn btn-light btn-outline-dark" sec:authorize="isAuthenticated()">Logout</a>
         </div>
     </nav>
 
-    <div th:fragment="header">
+    <div class="header" th:fragment="header">
         <div class="container-fluid">
             <div class="row justify-content-center mt-3 mb-3">
                <div class="col-12">
@@ -53,6 +61,7 @@
             </div>
         </div>
     </div>
+
     <footer class="footer" th:fragment="footer">
         <div class="container text-center">
             <span class="text-muted">Copyright @2021</span>
